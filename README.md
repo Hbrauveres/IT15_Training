@@ -1,2 +1,2 @@
-# IT15_Training_Csharp
-IT Academy 15 - C# training course activities
+# IT15_Training
+IT Academy 15 - Training course activities
