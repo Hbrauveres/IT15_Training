@@ -1,2 +1,2 @@
 # IT15_Training
-IT Academy 15 training course activities
+IT Academy 15 - Training course activities
