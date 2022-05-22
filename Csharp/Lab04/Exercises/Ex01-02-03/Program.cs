@@ -1,0 +1,15 @@
+﻿ContaCorrenteEx minhaConta = new ContaCorrenteEx("Henrique Silva");
+Console.WriteLine(minhaConta.Nome);
+Console.WriteLine($"Acumulador = {minhaConta.Acumulador}\nMedia = {minhaConta.Media}");
+Console.WriteLine($"Saldo = {minhaConta.Saldo.ToString()}");
+minhaConta.Depositar(100);
+Console.WriteLine($"Acumulador = {minhaConta.Acumulador}\nMedia = {minhaConta.Media}");
+Console.WriteLine($"Saldo = {minhaConta.Saldo.ToString()}");
+minhaConta.Sacar(50);
+Console.WriteLine($"Acumulador = {minhaConta.Acumulador}\nMedia = {minhaConta.Media}");
+Console.WriteLine($"Saldo = {minhaConta.Saldo.ToString()}");
+minhaConta.Sacar(50);
+minhaConta.Depositar(30);
+minhaConta.Depositar(100);
+Console.WriteLine($"Acumulador = {minhaConta.Acumulador}\nMedia = {minhaConta.Media}");
+Console.WriteLine($"Saldo = {minhaConta.Saldo.ToString()}");
