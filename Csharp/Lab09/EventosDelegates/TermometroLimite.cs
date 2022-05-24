@@ -31,7 +31,7 @@ public class TermometroLimite : Termometro
            }
     }
 
-    private void TestaEventoNormalização()
+    private void TestaEventoNormalizacao()
     {
         // Verifica se temperatura voltou diminuiu abaixo limite
         // Verifica se o evento ja foi disparado e evitar multiplos disparos
@@ -59,12 +59,12 @@ public class TermometroLimite : Termometro
     public override void Dimunuir()
     {
         base.Dimunuir();
-        TestaEventoNormalização();
+        TestaEventoNormalizacao();
     }
 
     public override void Dimunuir(double quantia)
     {
         base.Dimunuir(quantia);
-        TestaEventoNormalização();
+        TestaEventoNormalizacao();
     }
 }
