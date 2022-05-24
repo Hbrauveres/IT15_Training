@@ -16,8 +16,8 @@ public class TermometroLimite : Termometro
     }
 
     public delegate void MeuDelegate(string msg);
-    public event MeuDelegate EventoLimiteSuperior;
-    public event MeuDelegate EventoNormalizacao;
+    public event MeuDelegate? EventoLimiteSuperior;
+    public event MeuDelegate? EventoNormalizacao;
     private void TestaEventoDeLimiteSuperior()
     {
         // Verifica se temperatura ja passou do limite
