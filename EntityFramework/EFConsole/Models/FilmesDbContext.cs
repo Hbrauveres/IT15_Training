@@ -18,7 +18,7 @@ public class FilmesDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // NÃO DEVE COLOCAR STRING DE CONEXÃO FIXA NO CODIGO!!!!
-        optionsBuilder.UseSqlServer(@"Data Source=---------;Initial Catalog=IT15_BD_Filmes;Integrated Security=True"); // @ -> string literal
+        optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=IT15_BD_Filmes;Integrated Security=True"); // @ -> string literal
         optionsBuilder.EnableSensitiveDataLogging().LogTo(Console.WriteLine);
     }
 }
