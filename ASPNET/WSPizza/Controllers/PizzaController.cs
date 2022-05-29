@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace WSPizzaria.Controllers;
 
@@ -13,12 +14,14 @@ public class PizzaController : ControllerBase
         _logger = logger;
     }
 
+    [EnableCors("PermiteTudo")]
     [HttpGet]
     public IEnumerable<Pizza> GetAll()
     {
         return PizzaServices.GetAll();
     }
 
+    [EnableCors("PermiteTudo")]
     [HttpGet("{id}")] //.../pizza/1
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
@@ -48,4 +51,7 @@ public class PizzaController : ControllerBase
         PizzaServices.Delete(id);
         return NoContent();
     }
+
+    [HttpGet("excecao")] // .../pizza/execaco
+    public IActionResult GeraExcecao() => throw new Exception("Ocorreu alguma falha.");
 }   
