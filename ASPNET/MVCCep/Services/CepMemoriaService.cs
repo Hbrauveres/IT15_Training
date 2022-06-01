@@ -17,7 +17,7 @@ public class CepMemoriaService : ICepService
                 Cep = "90619900"
             });
         _dados.TryAdd("01001000", new ConsultaCep{
-                Logradouro = "´Praça da Sé",
+                Logradouro = "Praça da Sé",
                 Bairro = "Sé",
                 Cidade = "São Paulo",
                 Estado = "SP",
