@@ -62,11 +62,42 @@ WHERE cod_cliente = 18
 ORDER BY valor_unitario DESC;
 
 -- h) Qual  o  valor  total  gasto por  cliente,  ordenado  em  ordem decrescente  de  valor total, considerando apenas os clientes do Rio Grande do Sul? 
+SELECT c.cod_cliente, SUM(pp.quantidade * pp.valor_unitario) as Gasto_total
+FROM clientes as c
+JOIN pedidos as p ON c.cod_cliente = p.cod_cliente
+JOIN pedidos_produtos as pp ON p.num_pedido = pp.num_pedido
+JOIN clientes_enderecos as cliend ON cliend.cod_cliente = p.cod_cliente AND p.cod_endereco = cliend.cod_endereco
+JOIN enderecos as en ON en.cod_endereco = cliend.cod_endereco
+JOIN cidades as cid ON cid.cod_cidade = en.cod_cidade
+WHERE cid.uf = 'RS'
+GROUP BY c.cod_cliente, cid.uf
+ORDER BY Gasto_total DESC;
 
 -- i) Qual o valor total vendido por autor? 
+SELECT A.nome, A.cod_autor, SUM(pp.quantidade * pp.valor_unitario) as total
+FROM autores as A
+JOIN autores_produtos as AP ON A.cod_autor = AP.cod_autor 
+JOIN pedidos_produtos as PP ON AP.cod_produto = PP.cod_produto
+GROUP BY A.nome, A.cod_autor
+ORDER BY A.cod_autor;
 
--- j) Qual o valor médio faturado com as vendas por produto? 
+-- j) Qual o valor médio faturado com as vendas por produto?
+SELECT p.cod_produto, avg(quantidade * valor_unitario)
+from produtos as p join pedidos_produtos as pp on p.cod_produto = pp.cod_produto
+group by p.cod_produto;
 
 -- k) Qual o valor total de cada pedido? 
+SELECT P.num_pedido, SUM(quantidade * valor_unitario)
+FROM pedidos as P join pedidos_produtos as PP ON p.num_pedido = pp.num_pedido
+GROUP BY num_pedido;
 
 -- l) Qual o valor médio dos pedidos por estado?
+-- Não funciona no SQL SERVER, precisa traduzir para codigo mssqlserver
+select uf, sum(quantidade * valor_unitario) / count(distinct num_pedido)
+from estados join cidades using(uf)
+             join enderecos using(cod_cidade)
+             join clientes_enderecos using(cod_endereco)
+             join pedidos using(cod_cliente,cod_endereco)
+             join pedidos_produtos using(num_pedido)
+group by uf;
+
