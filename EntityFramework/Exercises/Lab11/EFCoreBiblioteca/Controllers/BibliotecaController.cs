@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using EFCoreBiblioteca.Services;
+using EFCoreBiblioteca.Models;
 
 namespace EFCoreBiblioteca.Controllers;
 
@@ -13,5 +15,4 @@ public class BibliotecaController : ControllerBase
         _logger = logger;
     }
 }
-
 
