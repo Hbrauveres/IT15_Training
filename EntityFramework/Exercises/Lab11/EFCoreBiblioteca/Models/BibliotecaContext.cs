@@ -17,6 +17,8 @@ public class BibliotecaContext : DbContext
     public DbSet<Autor> Autores { get; set; } = null!;
     public DbSet<Emprestimo> Emprestimos { get; set; } = null!;
 
+    public DbSet<LivroAutor> LivroAutor { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Livro>(entity =>
@@ -36,5 +38,8 @@ public class BibliotecaContext : DbContext
             .HasMany(e => e.Autores)
             .WithMany(e => e.Livros)
             .UsingEntity<LivroAutor>();
+
+        modelBuilder.Entity<LivroAutor>()
+            .HasKey(e => new { e.LivroId, e.AutorId });
     }
 }

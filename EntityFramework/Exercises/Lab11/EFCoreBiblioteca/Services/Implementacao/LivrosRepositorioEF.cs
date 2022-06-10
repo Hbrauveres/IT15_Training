@@ -1,4 +1,5 @@
 using EFCoreBiblioteca.Models;
+using EFCoreBiblioteca.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCoreBiblioteca.Services;
@@ -25,5 +26,17 @@ public class LivrosRepositorioEF : ILivrosRepositorio
     public async Task<IEnumerable<Livro>> GetLivrosAsync()
     {
         return await _contexto.Livros.ToListAsync();
+    }
+
+    public async Task<IEnumerable<Livro>> GetLivrosByAutorAsync(int autorId)
+    {
+        var livros = await _contexto.LivroAutor
+            .Include(la => la.Livro)
+            .Include(la => la.Autor)
+            .Where(la => la.AutorId == autorId)
+            .Select(la => la.Livro)
+            .ToListAsync();
+        
+        return livros;
     }
 }

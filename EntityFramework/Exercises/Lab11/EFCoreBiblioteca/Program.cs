@@ -1,6 +1,8 @@
 using EFCoreBiblioteca.Models;
 using Microsoft.EntityFrameworkCore;
 using EFCoreBiblioteca.Services;
+using EFCoreBiblioteca.Services.Interfaces;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<BibliotecaContext>(options => {
 });
 
 builder.Services.AddScoped<ILivrosRepositorio, LivrosRepositorioEF>();
+builder.Services.AddScoped<IAutoresRepositorio, AutoresRepositorioEF>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
