@@ -4,28 +4,18 @@
 // disponibilizados pelo TypeScript. Utilize corretamente a declaração de 
 // tipos nos parâmetros e no resultado da função.
 
-class Circulo {
-    x: number;
-    y: number;
-    raio: number;
+function getMax(x:number[]) {
+  var maior = -Infinity;
   
-    constructor(x: number, y: number, raio: number) {
-      this.x = x;
-      this.y = y;
-      this.raio = raio;
-    }
-   
-    circunferencia() {
-      return (2 * Math.PI * this.raio);
-    }
-  
-    areaCirculo()
-    {
-      return (Math.PI * (this.raio ** 2));
+  for(var i = 0; i < x.length; i++){
+    if (x[i] > maior){
+      maior = x[i];
     }
   }
-  
-  let c1 = new Circulo(1,1,20)
-  
-  console.log(c1.areaCirculo());
-  console.log(c1.circunferencia());
+  return maior;
+}
+
+let numeros = [1,2,3,5,4,9,8,7,5,11,2,56,2,4,5,8,61,2,5]
+console.log(getMax(numeros));
+
+
