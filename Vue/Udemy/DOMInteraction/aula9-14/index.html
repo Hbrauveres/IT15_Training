@@ -1,0 +1,62 @@
+<!--
+  aulas 9 - 14
+  9 - diretiva de event v-on
+  10 - usando event-object
+  11 - argumentos customizados para eventos
+  12 - modificadores de evento event.xxx
+  13 - key modifiers keyup.enter
+  14 - utilizando expressoes js dentro do html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="increase(2, $event)">Click Me</button>
+        <button v-on:click="counter++">Click Me</button>
+        <p>{{ counter }}</p>
+        <p>{{ counter > 10 ? 'Greater than 10' : 'Smaller than 10'}}</p>
+        <p v-on:mousemove="updateCoordinates">
+            Coordinates: {{ x }} / {{ y }}
+            - <span v-on:mousemove="dummy">DEAD SPOT</span>
+            <!--
+            OUTRA FORMA DE FAZER SEM CRIAR FUNÇÃO DUMMY:
+            - <span v-on:mousemove.stop="">DEAD SPOT</span>
+            -->
+        </p>
+        <input type="text" v-on:keyup.enter="alertMe">
+    </div>
+</body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                increase: function(step, event){
+                    this.counter += step;
+                },
+                updateCoordinates: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                dummy: function(event){
+                    event.stopPropagation();
+                },
+                alertMe:function(){
+                    alert('Alert!');
+                }
+            }
+        });
+    </script>
+</html>

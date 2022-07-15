@@ -1,0 +1,46 @@
+<!--
+  aulas 22 - 23
+  22 - styles
+  23 - array de styles, muito util
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="demo" :style="{backgroundColor: color}"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle, {height: width+'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            color: 'gray',
+            width: 100,
+            //height: 100
+        },
+        computed: {
+            myStyle: function(){
+                return{
+                    backgroundColor: this.color,
+                    width: this.width + 'px',
+                    //height: this.height + 'px'
+                };
+            }
+        }
+    });
+</script>
+</html>

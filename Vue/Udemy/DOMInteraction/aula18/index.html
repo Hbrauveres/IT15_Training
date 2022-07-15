@@ -1,0 +1,34 @@
+<!--
+  aulas 18
+  18 - v-on => @ v-bind => : (ABREVIAÇÕES!)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="changeLink">Clink to Change Link</button>
+        <a :href="link">Link</a>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            link: 'http://google.com'
+        },
+        methods: {
+            changeLink: function(){
+                this.link = 'http://habbo.com'
+            }
+        }
+    })
+</script>
+</html>
